@@ -1,0 +1,42 @@
+* {
+    font-family: 'Avenir', sans-serif;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 500px;
+    background: #FFF;
+    text-align: center;
+    margin: 10px auto;
+    padding: 30px 20px;
+    border-radius: 30px;
+}
+
+.login-header {
+    display: flex;
+    width: 100%;
+    height: 10%;
+    font-size: 14px;
+}
+
+.header-button {
+    width: 50%;
+    height: auto;
+    color: #9F9FA1;
+    border-bottom: 3px solid #9F9FA1;
+    cursor: pointer;
+}
+
+.active {
+    color: #4044C9;
+    border-bottom: 3px solid #4044C9;
+}
+
+.login-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90%;
+}

@@ -1,0 +1,25 @@
+.form-container {
+    width: auto;
+    height: 15%;
+}
+  
+.form-input {
+    padding: 14px 32px 14px 16px;
+    border-radius: 10px 0 0 10px;
+    border: 2px solid #4044C9;
+    outline: none;
+    width: 320px;
+    background: transparent;
+}
+  
+.form-button {
+    padding: 16px;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    outline: none;
+    background: #4044C9;
+    color: #fff;
+    font-weight: bold;
+    text-transform: capitalize;
+}

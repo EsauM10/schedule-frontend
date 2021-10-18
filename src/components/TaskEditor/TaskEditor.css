@@ -1,0 +1,62 @@
+
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 5%;
+}
+
+.editor-header {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 80px;
+}
+
+.editor-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 10%;
+    width: 100%;
+}
+
+.editor-input {
+    padding: 14px 32px 14px 16px;
+    border-radius: 10px;
+    border: 2px solid #4044C9;
+    outline: none;
+    width: 100%;
+    background: transparent;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 80px;
+}
+
+.button-delete {
+    width: 80px;
+    padding: 10px 0px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    background: #F2F2F2;
+    color: #41414B;
+    font-weight: bold;
+}
+
+.button-save {
+    width: 80px;
+    padding: 10px 0px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    background: #4044C9;
+    color: #fff;
+    font-weight: bold;
+}
