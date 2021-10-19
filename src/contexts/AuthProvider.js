@@ -36,10 +36,9 @@ export default function AuthProvider({children}){
     }
 
     function signOut(){
-        api.post("auth/logout/").then(() => {
-            localStorage.clear();
-            setSigned(false);
-        });
+        api.post("auth/logout/").catch((err) => console.log(err.response));
+        localStorage.clear();
+        setSigned(false);
     }
 
     useEffect(() => {
