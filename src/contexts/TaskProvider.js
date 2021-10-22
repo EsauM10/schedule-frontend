@@ -1,10 +1,12 @@
 import React, { createContext, useEffect, useState, useContext, useCallback } from 'react';
 import {api} from "../services/api";
+import { AuthContext } from './AuthProvider';
 import { CalendarContext } from './CalendarProvider';
 
 export const TaskContext = createContext();
 
 export default function TaskProvider({children}){
+    const {clearStorage} = useContext(AuthContext);
     const {selectedItem} = useContext(CalendarContext);
     const [tasks, setTasks] = useState([]);
     const [taskSelected, setTaskSelected] = useState(null);
@@ -33,8 +35,11 @@ export default function TaskProvider({children}){
     const fetchTasks = useCallback(() => {
         const url = `?created_at=${selectedItem.full_date}`
         api.get(url).then(res => setTasks(res.data))
-        .catch(err => console.log(err.response));
-    }, [selectedItem]);
+        .catch(err => {
+            clearStorage();
+            console.log(err.response)
+        });
+    }, [selectedItem, clearStorage]);
     
 
     useEffect(() => {

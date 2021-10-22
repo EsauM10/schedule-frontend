@@ -12,8 +12,14 @@ export default function AuthProvider({children}){
     const clearErrors = useCallback(() => {
         setErrors([]);
     }, [])
+
+    const clearStorage = () => {
+        api.defaults.headers["Authorization"] = "";
+        localStorage.clear();
+        setSigned(false);
+    }
     
-    async function signIn(data){
+    function signIn(data){
         api.defaults.headers["Authorization"] = "";
         api.post("auth/login/", data)
         .then(res => {
@@ -24,7 +30,7 @@ export default function AuthProvider({children}){
         .catch(err => setErrors(() => getErrors(err.response.data)));
     }
 
-    async function signUp(data){
+    function signUp(data){
         api.defaults.headers["Authorization"] = "";
         api.post("auth/signup/", data)
         .then(res => {
@@ -37,8 +43,7 @@ export default function AuthProvider({children}){
 
     function signOut(){
         api.post("auth/logout/").catch((err) => console.log(err.response));
-        localStorage.clear();
-        setSigned(false);
+        clearStorage();
     }
 
     useEffect(() => {
@@ -53,6 +58,7 @@ export default function AuthProvider({children}){
             signed,
             errors,
             clearErrors,
+            clearStorage,
             signIn,
             signUp,
             signOut
