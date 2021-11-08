@@ -33,6 +33,9 @@ export default function TaskProvider({children}){
     }
 
     const fetchTasks = useCallback(() => {
+        if(selectedItem === undefined) {
+            return;
+        }
         const url = `?created_at=${selectedItem.full_date}`
         api.get(url).then(res => setTasks(res.data))
         .catch(err => {

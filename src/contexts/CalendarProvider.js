@@ -1,4 +1,4 @@
-import React, {createContext, useState} from "react";
+import React, {createContext, useEffect, useState} from "react";
 import {getDaysInMonth, getSelectedDate} from "../services/dates";
 
 const date = new Date();
@@ -8,9 +8,10 @@ const todayItem    = getSelectedDate(calendarDays);
 export const CalendarContext = createContext();
 
 export default function CalendarProvider({children}){
-    const[days, setDays] = useState(calendarDays);
-    const[selectedItem, setSelectedItem] = useState(todayItem);
-    
+    const [days, setDays] = useState(calendarDays);
+    const [selectedMonth, setSelectedMonth] = useState(date.getMonth());
+    const [selectedItem, setSelectedItem]   = useState(todayItem);
+
     const setSelectedDateItem = (date) => {
         const newDays = days.map((item) => {
             if(item.date === date){
@@ -25,10 +26,16 @@ export default function CalendarProvider({children}){
         setDays(newDays);
     }
 
+    useEffect(() => {
+        const calendarDays = getDaysInMonth(selectedMonth, date.getFullYear());
+        const todayItem    = getSelectedDate(calendarDays);
+        setDays(calendarDays);
+        setSelectedItem(todayItem);
+    }, [selectedMonth])
 
     return (
         <CalendarContext.Provider
-            value={{days, selectedItem, setSelectedDateItem}}
+            value={{days, selectedMonth, selectedItem, setSelectedMonth, setSelectedDateItem}}
         >
             {children}
         </CalendarContext.Provider>
