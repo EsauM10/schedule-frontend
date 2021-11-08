@@ -2,15 +2,13 @@ import React, {createContext, useEffect, useState} from "react";
 import {getDaysInMonth, getSelectedDate} from "../services/dates";
 
 const date = new Date();
-const calendarDays = getDaysInMonth(date.getMonth(), date.getFullYear());
-const todayItem    = getSelectedDate(calendarDays); 
 
 export const CalendarContext = createContext();
 
 export default function CalendarProvider({children}){
-    const [days, setDays] = useState(calendarDays);
+    const [days, setDays] = useState([]);
     const [selectedMonth, setSelectedMonth] = useState(date.getMonth());
-    const [selectedItem, setSelectedItem]   = useState(todayItem);
+    const [selectedItem, setSelectedItem]   = useState(undefined);
 
     const setSelectedDateItem = (date) => {
         const newDays = days.map((item) => {
